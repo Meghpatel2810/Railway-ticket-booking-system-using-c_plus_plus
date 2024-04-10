@@ -9,35 +9,38 @@ class train{
     string date;
     string train_name;
     public:
+    void setdate(){
+       cout<<"Enter your preferrable date for your Journey(DD/MM/YYYY): ";
+       cin>>date;
+    }
     void choose()
     {
-        cout<<"Enter the date (DD/MM/YYYY) : ";
-        getline(cin,date);
-        cin.clear();
-
-        cout<<"We have the following options for train"<<endl<<"All Classes (General)"<<endl<<"Anubhuti class (EA)"<<endl<<"AC first class (1A)"<<endl<<"Vistadome AC (EV)"<<endl<<"Exec. Chair Car (EC)"<<endl<<"AC 2 tier (2A)"<<endl;
+        cout<<"We have the following Classes for train"<<endl<<"All Classes (General)"<<endl<<"Anubhuti class (EA)"<<endl<<"AC first class (1A)"<<endl<<"Vistadome AC (EV)"<<endl<<"Exec. Chair Car (EC)"<<endl<<"AC 2 tier (2A)"<<endl;
         cout<<"First class (FC)"<<endl<<"AC 3 tier (3A)"<<endl<<"AC 3 Economy (3E)"<<endl<<"Vistadome chair car (VC)"<<endl<<"AC Chair car (CC)"<<endl<<"Sleeper (SL)"<<endl;
         cout<<"Vistadome Non AC (VS)"<<endl<<"Second Sitting (2S)"<<endl<<endl;
-
-        cout<<"Please select your preference";
-        getline(cin,Class_preference);
         cin.clear();
+        cout<<"Please select your preference: ";
+        cin>>Class_preference;
+        
     }
 
     void choose_name()
     {
         cout<<"The trains available on "<<date<<" :-"<<endl;
 
-        Rajdhani Express, Shatabdi Express, Maharaja Express, Gujarat Express, Vande Bharat Express, Golden Chariot, Deccan Odyssey, Gatimaan Express, Duronto Express, Maitree Express
+        cout<<"Rajdhani Express"<<endl<<"Shatabdi Express"<<endl<<"Maharaja Express"<<endl
+            <<"Gujarat Express"<<endl<<"Vande Bharat Express"<<endl<<"Golden Chariot"<<
+            endl<<"Deccan Odyssey"<<endl<<"Gatimaan Express"<<endl<<"Duronto Express"<<endl
+            <<"Maitree Express"<<endl;
     }
     
     
 };
 
-class passenger{
+class passenger : public train{
     private:
        string name, gender;
-       string passenger_preference;
+       string passenger_preference, berth_preference;
        string arrival_location, departure_location;
        string date;
        long long contact_number;
@@ -55,6 +58,8 @@ class passenger{
             cin>>departure_location;
             cout<<"At where you want to conclude your Journey: ";
             cin>>arrival_location;
+
+
         }   
        void choose_Quota()
        {
@@ -66,10 +71,16 @@ class passenger{
             cout<<"Duty Pass"<<endl;
             cout<<"Tatkal"<<endl;
             cout<<"Premium Tatkal"<<endl;
-            cout<<"Please type your preference: "<<endl;
-            getline(cin,passenger_preference);
-            cin.clear();
+            cout<<"Please type your preference: ";
+            cin>>passenger_preference;
        } 
+       string xyz;
+       void showTicket(){
+            cout<<"Unique ID: "<<xyz<<endl;
+            cout<<"Name of Passenger: "<<name<<endl;
+            cout<<"From: "<<departure_location<<endl;
+            cout<<"To: "<<arrival_location<<endl;
+       }
 
 };
 
@@ -79,8 +90,16 @@ int main()
 {
    //Take necessary inputs from user
     cout<<"Welcome to CRCTC"<<endl;
-    
+    train t;
     passenger p;
     p.passenger_details();
+    t.setdate();
+    t.choose_name();
+    t.choose();
     p.choose_Quota();
+    string choice;
+    cout<<"Do you want to confirm your ticket (Press 'Y' to Book or Press 'N' to not book): ";
+    getline(cin,choice);
+    cin.clear();
+    p.showTicket();
 }
