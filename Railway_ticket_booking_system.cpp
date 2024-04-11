@@ -1,5 +1,6 @@
 #include<iostream>
 #include<windows.h> //For sleep function
+#include<stdio.h>
 using namespace std;
 
 class train{
@@ -18,10 +19,10 @@ class train{
         cout<<"We have the following Classes for train"<<endl<<"All Classes (General)"<<endl<<"Anubhuti class (EA)"<<endl<<"AC first class (1A)"<<endl<<"Vistadome AC (EV)"<<endl<<"Exec. Chair Car (EC)"<<endl<<"AC 2 tier (2A)"<<endl;
         cout<<"First class (FC)"<<endl<<"AC 3 tier (3A)"<<endl<<"AC 3 Economy (3E)"<<endl<<"Vistadome chair car (VC)"<<endl<<"AC Chair car (CC)"<<endl<<"Sleeper (SL)"<<endl;
         cout<<"Vistadome Non AC (VS)"<<endl<<"Second Sitting (2S)"<<endl<<endl;
-        cin.clear();
         cout<<"Please select your preference: ";
         cin>>Class_preference;
-        
+        cin.clear();
+
     }
 
     void choose_name()
@@ -36,7 +37,6 @@ class train{
     
     
 };
-
 class passenger : public train{
     private:
        string name, gender;
@@ -73,15 +73,34 @@ class passenger : public train{
             cout<<"Premium Tatkal"<<endl;
             cout<<"Please type your preference: ";
             cin>>passenger_preference;
+            cin.clear();
        } 
-       string xyz;
+       
        void showTicket(){
-            cout<<"Unique ID: "<<xyz<<endl;
+            string xyz;
+            //cout<<"Unique ID: "<<xyz<<endl;
             cout<<"Name of Passenger: "<<name<<endl;
+            cout<<"Date: "<<date<<endl;
             cout<<"From: "<<departure_location<<endl;
             cout<<"To: "<<arrival_location<<endl;
+            cout<<"Quota: "<<passenger_preference<<endl;
+           // cout<<"Class: "<<Class_preference<<endl;
        }
 
+};
+class select_train_with_timing{
+      private:
+      string time,train_name;
+      int i;
+      public:
+      /*
+      for(i=0; i<10; i++)
+      {
+        cin>>train_name;
+        cout<<"-";
+        cin>>time;
+      }
+      */
 };
 
 //Inherit diffrent types of trains and passenger classes 
@@ -97,9 +116,10 @@ int main()
     t.choose_name();
     t.choose();
     p.choose_Quota();
+    cin.clear();
     string choice;
     cout<<"Do you want to confirm your ticket (Press 'Y' to Book or Press 'N' to not book): ";
-    getline(cin,choice);
+    cin>>choice;
     cin.clear();
     p.showTicket();
 }
