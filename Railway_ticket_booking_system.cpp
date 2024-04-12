@@ -3,6 +3,7 @@
 #include<iostream>
 #include<cmath>
 #include<windows.h> //For sleep function
+
 using namespace std;
 
 class passenger;
@@ -145,6 +146,7 @@ void ticket(train t,passenger p)
     
     cout<<"Paasenger coach\t\t:"<<p.passenger_preference<<endl;
     cout<<"Railway coach\t\t:"<<t.Class_preference<<endl;
+    cout<<"Ticket Price\t\t:500"<<endl;
     cout<<"*******************************************************************************************************************************************"<<endl;
     
 }
