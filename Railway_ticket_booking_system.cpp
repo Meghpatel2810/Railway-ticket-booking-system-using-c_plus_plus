@@ -1,6 +1,7 @@
 //THIS CODE IS PREPARED BY 23CS069 MEGH PATEL,23CS070 NISARG PATEL,23CS075 TEJAS PATEL
 
 #include<iostream>
+#include<cmath>
 #include<windows.h> //For sleep function
 using namespace std;
 
@@ -9,20 +10,32 @@ class train{
 
     private:
     string Class_preference;
-    string date,rail,time;
+    string date,rail,train_time;
     string train_name;
     int train_choice;
     string trains[10]={
-        "Rajdhani express \t\t 8:30-9:00 AM",
-        "Shatabdi Express \t\t 9:30-10:00 AM",
-        "Maharaja Express \t\t 10:30-11:30 AM",
-        "Gujarat Express \t\t 2:00-2:30 PM",
-        "Vande Bharat Express \t 3:00-3:30 PM",
-        "Golden Chariot \t\t 3:30-4:00 PM",
-        "Deccan Odyssey \t\t 4:00-4:30 PM",
-        "Gatimaan Express \t\t 4:30-5:00 PM",
-        "Duronto Express \t\t 5:00-5:30 PM",
-        "Maitree Express \t\t 5:30-6:00 PM"
+        "Rajdhani express",
+        "Shatabdi Express",
+        "Maharaja Express",
+        "Gujarat Express",
+        "Vande Bharat Express",
+        "Golden Chariot",
+        "Deccan Odyssey",
+        "Gatimaan Express",
+        "Duronto Express",
+        "Maitree Express"
+    };
+    string time[10]={
+        "8:30-9:00 AM",
+        "9:30-10:00 AM",
+        "10:30-11:30 AM",
+        "2:00-2:30 PM",
+        "3:00-3:30 PM",
+        "3:30-4:00 PM",
+        "4:00-4:30 PM",
+        "4:30-5:00 PM",
+        "5:00-5:30 PM",
+        "5:30-6:00 PM",
     };
 
     public: 
@@ -46,11 +59,17 @@ class train{
         cout<<"Enter the date (DD/MM/YYYY) : ";
         getline(cin,date);
         cin.clear();
+
         cout<<"--------------------------------------------------------------------------------------------"<<endl;
         cout<<"The trains available on "<<date<<" :-"<<endl;
         for(int i=0;i<10;i++)
         {
-            cout<<"["<<i+1<<"] "<<trains[i]<<endl;
+            if(i==4)
+            {
+                cout<<"["<<i+1<<"] "<<trains[i]<<" \t "<<time[i]<<endl;
+                continue;
+            }
+            cout<<"["<<i+1<<"] "<<trains[i]<<" \t\t "<<time[i]<<endl;
         }
         cout<<"Which train would you like to select(Enter number): ";
         cin>>train_choice;
@@ -61,6 +80,7 @@ class train{
         }
         train_choice--;
         rail=trains[train_choice];
+        train_time=time[train_choice];
 
     }
 
@@ -82,6 +102,11 @@ class passenger{
 
             cout<<"Enter your Contact Number: ";
             cin>>contact_number;
+            if(contact_number<pow(10,9))
+            {
+                cout<<"Please enter correct mobile number";
+                exit(0);
+            }
 
             cout<<"From where you want to start your Journey: ";
             cin>>departure_location;
@@ -116,10 +141,11 @@ void ticket(train t,passenger p)
     cout<<"From\t\t\t:"<<p.departure_location<<endl;
     cout<<"To\t\t\t:"<<p.arrival_location<<endl;
     cout<<"Train\t\t\t:"<<t.rail<<endl;
+    cout<<"Time\t\t\t:"<<t.train_time<<endl;
     
     cout<<"Paasenger coach\t\t:"<<p.passenger_preference<<endl;
     cout<<"Railway coach\t\t:"<<t.Class_preference<<endl;
-    cout<<"****************************************************************************************************************************"<<endl;
+    cout<<"*******************************************************************************************************************************************"<<endl;
     
 }
 
@@ -127,7 +153,7 @@ void ticket(train t,passenger p)
 int main()
 {
    //INPUT
-    cout<<"Welcome to CRCTC[Charusat Railway Catering and Tourism Corporation]"<<endl;
+    cout<<"Welcome to CRCTC  [Charusat Railway Catering and Tourism Corporation]"<<endl;
     
     passenger p;
     train t;
